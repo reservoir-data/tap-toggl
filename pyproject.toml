@@ -1,0 +1,139 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = [
+  "hatch-vcs",
+  "hatchling",
+]
+
+[project]
+name = "tap-toggl"
+description = "`tap-toggl` is a Singer tap for Toggl, built with the Meltano SDK for Singer Taps."
+readme = "README.md"
+keywords = [
+  "ELT",
+  "Toggl",
+  "singer.io",
+]
+license.file = "LICENSE"
+maintainers = [{ name = "Edgar Ramírez",  email = "edgarrmondragon@hey.com" }]
+authors = [{ name = "Edgar Ramírez",  email = "edgarrmondragon@hey.com" }]
+requires-python = ">=3.8"
+classifiers = [
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+dynamic = [
+  "version",
+]
+dependencies = [
+  "requests==2.31.0",
+  "singer-sdk==0.35.0",
+  "toolz==0.12.1",
+]
+optional-dependencies.dev = [
+  "tap-toggl[testing,typing]",
+]
+optional-dependencies.testing = [
+  "deptry>=0.12",
+  "pytest>=8",
+  "singer-sdk[testing]",
+]
+optional-dependencies.typing = [
+  "mypy",
+  "types-requests",
+]
+urls.Documentation = "https://github.com/edgarrmondragon/tap-toggl#readme"
+urls.Homepage = "https://github.com/edgarrmondragon/tap-toggl"
+urls.Repository = "https://github.com/edgarrmondragon/tap-toggl"
+scripts."tap-toggl" = "tap_toggl.tap:TapToggl.cli"
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.envs.sync.scripts]
+console = "tap-toggl {args}"
+jsonl = "tap-toggl {args} > tap-toggl.jsonl"
+
+[tool.hatch.envs.test]
+features = ["testing"]
+[tool.hatch.envs.test.scripts]
+integration = "pytest {args:tests}"
+dependencies = "deptry ."
+
+[tool.hatch.envs.all]
+template = "test"
+[[tool.hatch.envs.all.matrix]]
+python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
+
+[tool.hatch.envs.typing]
+features = ["testing", "typing"]
+[tool.hatch.envs.typing.scripts]
+check = "mypy --strict {args:tap_toggl tests}"
+
+[tool.ruff]
+line-length = 88
+target-version = "py38"
+
+[tool.ruff.lint]
+ignore = [
+  "ANN101",  # missing-type-self
+  "DJ",      # flake8-django
+  "PD",      # pandas-vet
+  "FIX002",  # line-contains-todo
+  "COM812",  # missing-trailing-comma
+  "ISC001",  # single-line-implicit-string-concatenation
+]
+select = ["ALL"]
+unfixable = [
+  "ERA001",  # commented-out-code
+]
+
+[tool.ruff.lint.flake8-annotations]
+allow-star-arg-any = true
+
+[tool.ruff.lint.isort]
+known-first-party = ["tap_toggl"]
+required-imports = ["from __future__ import annotations"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = [
+  "ANN201",  # missing-return-type-public-function
+  "S101",    # assert
+  "SLF001",  # private-member-access
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.deptry.package_module_name_map]
+mypy = "mypy"
+pytest = "pytest"
+tap-toggl = "tap_toggl"
+types-requests = "requests"
+
+[tool.deptry.per_rule_ignores]
+DEP002 = [
+  "deptry",
+  "mypy",
+  "pytest",
+]
+
+[tool.pytest.ini_options]
+addopts = "-vvv"
+
+[tool.mypy]
+python_version = "3.12"
+warn_redundant_casts = true
+warn_return_any = true
+warn_no_return = true
+warn_unreachable = true
+warn_unused_configs = true
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+ignore_missing_imports = true
+module = ["backoff.*"]
