@@ -17,5 +17,3 @@ TestTapToggl = get_tap_test_class(
         max_records_limit=10,
     ),
 )
-
-# TODO(edgarrmondragon): Create additional tests as appropriate for your tap.
