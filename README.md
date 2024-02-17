@@ -83,10 +83,10 @@ pipx install hatch
 Run integration tests:
 
 ```bash
-hatch run tests:integration
+hatch run test:integration
 ```
 
-You can also test the `tap-tap-toggl` CLI interface directly:
+You can also test the `tap-toggl` CLI interface directly:
 
 ```bash
 hatch run sync:console -- --about --format=json
@@ -108,13 +108,13 @@ Your project comes with a custom `meltano.yml` project file already created. Go 
 1. Check that the extractor is working properly
 
    ```bash
-   meltano invoke tap-tap-toggl --version
+   meltano invoke tap-toggl --version
    ```
 
 1. Execute an ELT pipeline
 
    ```bash
-   meltano run tap-tap-toggl target-jsonl
+   meltano run tap-toggl target-jsonl
    ```
 
 ### SDK Dev Guide
