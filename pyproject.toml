@@ -11,8 +11,8 @@ description = "`tap-toggl` is a Singer tap for Toggl, built with the Meltano SDK
 readme = "README.md"
 keywords = [
   "ELT",
-  "Toggl",
   "singer.io",
+  "Toggl",
 ]
 license.file = "LICENSE"
 maintainers = [{ name = "Edgar Ramírez",  email = "edgarrmondragon@hey.com" }]
@@ -30,9 +30,8 @@ dynamic = [
   "version",
 ]
 dependencies = [
-  "requests==2.31.0",
-  "singer-sdk==0.35.1",
-  "toolz==0.12.1",
+  "requests==2.31",
+  "singer-sdk==0.35.2",
 ]
 optional-dependencies.dev = [
   "tap-toggl[testing,typing]",

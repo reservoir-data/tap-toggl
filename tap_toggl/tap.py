@@ -13,28 +13,12 @@ from tap_toggl import streams
 OPENAPI_URL = "https://api.planetscale.com/v1/openapi-spec"
 
 
-
 class TapToggl(Tap):
     """Singer tap for Toggl."""
 
     name = "tap-toggl"
 
     config_jsonschema = th.PropertiesList(
-        # th.Property(
-        #     "auth",
-        #     th.DiscriminatedUnion(
-        #         "type",
-        #         username=th.ObjectType(
-        #             th.Property("username", th.StringType, required=True),
-        #             th.Property("password", th.StringType, required=True, secret=True),
-        #         ),
-        #         api_token=th.ObjectType(
-        #             th.Property("api_token", th.StringType, required=True, secret=True),
-        #         ),
-        #     ),
-        #     required=True,
-        #     description="Toggl authentication credentials",
-        # ),
         th.Property(
             "username",
             th.StringType,

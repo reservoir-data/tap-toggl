@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-import typing as t
-
 from singer_sdk import typing as th
 
 from tap_toggl.client import TogglStream
@@ -38,13 +36,13 @@ class TimeEntries(TogglStream):
         th.Property(
             "duration",
             th.IntegerType,
-            description="Time entry duration. For running entries should be negative, preferable -1",
+            description="Time entry duration. For running entries should be negative, preferable -1",  # noqa: E501
         ),
         th.Property(
             "duronly",
             th.BooleanType,
             description=(
-                "Used to create a TE with a duration but without a stop time, this field is deprecated for GET endpoints where the value will always be true."
+                "Used to create a TE with a duration but without a stop time, this field is deprecated for GET endpoints where the value will always be true."  # noqa: E501
             ),
         ),
         th.Property(
@@ -60,7 +58,7 @@ class TimeEntries(TogglStream):
         th.Property(
             "project_id",
             th.IntegerType,
-            description="Project ID. Can be null if project was not provided or project was later deleted",
+            description="Project ID. Can be null if project was not provided or project was later deleted",  # noqa: E501
         ),
         th.Property(
             "server_deleted_at",
@@ -75,7 +73,7 @@ class TimeEntries(TogglStream):
         th.Property(
             "stop",
             th.DateTimeType,
-            description="Stop time in UTC, can be null if it's still running or created with 'duration' and 'duronly' fields",
+            description="Stop time in UTC, can be null if it's still running or created with 'duration' and 'duronly' fields",  # noqa: E501
         ),
         th.Property(
             "tag_ids",
@@ -85,12 +83,12 @@ class TimeEntries(TogglStream):
         th.Property(
             "tags",
             th.ArrayType(th.StringType),
-            description="Tag names, null if tags were not provided or were later deleted",
+            description="Tag names, null if tags were not provided or were later deleted",  # noqa: E501
         ),
         th.Property(
             "task_id",
             th.IntegerType,
-            description="Task ID. Can be null if task was not provided or project was later deleted",
+            description="Task ID. Can be null if task was not provided or project was later deleted",  # noqa: E501
         ),
         th.Property(
             "uid",
@@ -142,7 +140,7 @@ class Organizations(TogglStream):
         th.Property(
             "is_multi_workspace_enabled",
             th.BooleanType,
-            description="Is true when the organization option is_multi_workspace_enabled is set",
+            description="Is true when the organization option is_multi_workspace_enabled is set",  # noqa: E501
         ),
         th.Property(
             "is_unified",
@@ -172,7 +170,7 @@ class Organizations(TogglStream):
         th.Property(
             "payment_methods",
             th.StringType,
-            description="Organization's subscription payment methods. Omitted if empty.",
+            description="Organization's subscription payment methods. Omitted if empty.",  # noqa: E501
         ),
         th.Property(
             "permissions",
@@ -210,7 +208,7 @@ class Organizations(TogglStream):
                 th.Property(
                     "trial",
                     th.BooleanType,
-                    description="Whether the organization's subscription is currently on trial",
+                    description="Whether the organization's subscription is currently on trial",  # noqa: E501
                 ),
                 th.Property(
                     "trial_available",
