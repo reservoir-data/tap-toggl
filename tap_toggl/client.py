@@ -26,19 +26,10 @@ class TogglStream(RESTStream[t.Any]):
             return HTTPBasicAuth(api_token, "api_token")
         if username := self.config.get("username"):
             password = self.config.get("password")
-            return HTTPBasicAuth(username, password)
+            return HTTPBasicAuth(username, password)  # type: ignore[arg-type]
 
         msg = "Invalid auth configuration"
         raise ValueError(msg)
-
-        # match self.config["auth"]:
-        #     case {"username": username, "password": password}:
-        #         return HTTPBasicAuth(username, password)
-        #     case {"api_token": api_token}:
-        #         return HTTPBasicAuth(api_token, "api_token")
-        #     case _:
-        #         msg = "Invalid auth configuration"
-        #         raise ValueError(msg)
 
     @property
     def http_headers(self) -> dict[str, str]:
