@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from singer_sdk import typing as th
 
-from tap_toggl.client import TogglStream
+from tap_toggl.client import IncrementalTogglStream, TogglStream
 
 
-class TimeEntries(TogglStream):
+class TimeEntries(IncrementalTogglStream):
     """Entries stream."""
 
     name = "time_entries"
