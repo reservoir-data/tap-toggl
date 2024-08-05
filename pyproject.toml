@@ -35,7 +35,7 @@ dynamic = [
 ]
 dependencies = [
   "requests==2.32.3",
-  "singer-sdk==0.39.0",
+  "singer-sdk==0.39",
 ]
 optional-dependencies.dev = [
   "tap-toggl[testing,typing]",
