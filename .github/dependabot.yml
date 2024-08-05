@@ -18,9 +18,12 @@ updates:
       prefix: "feat(deps): "
       prefix-development: "chore(deps-dev): "
     groups:
-      singer-sdk:
-        patterns:
-          - "singer-sdk*"
+      development-dependencies:
+        dependency-type: development
+      runtime-dependencies:
+        dependency-type: production
+        update-types:
+          - "patch"
   - package-ecosystem: pip
     directory: "/.github/workflows"
     schedule:
@@ -31,6 +34,10 @@ updates:
       - "edgarrmondragon"
     commit-message:
       prefix: "ci: "
+    groups:
+      ci:
+        patterns:
+          - "*"
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
