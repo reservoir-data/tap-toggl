@@ -7,6 +7,9 @@ import typing as t
 from requests.auth import HTTPBasicAuth
 from singer_sdk import RESTStream
 
+if t.TYPE_CHECKING:
+    from singer_sdk.helpers.types import Context
+
 
 class TogglStream(RESTStream[t.Any]):
     """Toggl stream class."""
@@ -42,7 +45,7 @@ class TogglStream(RESTStream[t.Any]):
 
     def get_url_params(
         self,
-        context: dict[str, t.Any] | None,  # noqa: ARG002
+        context: Context | None,  # noqa: ARG002
         next_page_token: t.Any | None,  # noqa: ARG002, ANN401
     ) -> dict[str, t.Any]:
         """Get URL query parameters.
@@ -66,7 +69,7 @@ class IncrementalTogglStream(TogglStream):
 
     def get_url_params(
         self,
-        context: dict[str, t.Any] | None,
+        context: Context | None,
         next_page_token: t.Any | None,  # noqa: ANN401
     ) -> dict[str, t.Any]:
         """Get URL query parameters.
