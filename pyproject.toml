@@ -7,7 +7,7 @@ requires = [
 
 [project]
 name = "tap-toggl"
-description = "`tap-toggl` is a Singer tap for Toggl, built with the Meltano SDK for Singer Taps."
+description = "Singer tap for Toggl, built with the Meltano SDK for Singer Taps."
 readme = "README.md"
 keywords = [
   "ELT",
@@ -29,6 +29,7 @@ classifiers = [
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
 ]
 dynamic = [
   "version",
@@ -78,6 +79,7 @@ python = [
   "3.10",
   "3.11",
   "3.12",
+  "3.13",
 ]
 
 [tool.hatch.envs.typing]
@@ -132,6 +134,9 @@ DEP002 = [
   "mypy",
   "pytest",
 ]
+
+[tool.pyproject-fmt]
+max_supported_python = "3.13"
 
 [tool.pytest.ini_options]
 addopts = "-vvv"
