@@ -1,11 +1,20 @@
 <div align="center">
 
-# `tap-toggl`
+# tap-toggl
 
 <div>
-   <a href="https://polar.sh/edgarrmondragon/tap-toggl">
-      <img src="https://polar.sh/embed/seeks-funding-shield.svg?org=edgarrmondragon&repo=tap-toggl"/>
-   </a>
+  <a href="https://polar.sh/reservoir-data/tap-toggl">
+    <img src="https://polar.sh/embed/seeks-funding-shield.svg?org=edgarrmondragon&repo=tap-toggl"/>
+  </a>
+  <a href="https://scientific-python.org/specs/spec-0000/">
+    <img alt="SPEC 0 — Minimum Supported Dependencies" src="https://img.shields.io/badge/SPEC-0-green?labelColor=%23004811&color=%235CA038"/>
+  </a>
+  <a href="https://results.pre-commit.ci/latest/github/reservoir-data/tap-toggl/main">
+    <img alt="pre-commit.ci status" src="https://results.pre-commit.ci/badge/github/reservoir-data/tap-toggl/main.svg"/>
+  </a>
+  <a href="https://github.com/reservoir-data/tap-toggl/blob/main/LICENSE">
+    <img alt="License" src="https://img.shields.io/github/license/reservoir-data/tap-toggl"/>
+  </a>
 </div>
 
 Singer tap for [Toggl](https://toggl.com) Time Tracking.
@@ -43,11 +52,9 @@ A full list of supported settings and capabilities is available by running: `tap
 
 ## Supported Python Versions
 
-* 3.8
-* 3.9
-* 3.10
 * 3.11
 * 3.12
+* 3.13
 
 ### Source Authentication and Authorization
 
