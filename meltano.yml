@@ -7,27 +7,26 @@ environments:
 plugins:
   extractors:
   - name: tap-toggl
-    label: Toggl
     namespace: toggl
-    description: Time Tracking Software for Any Workflow
-    repository: https://github.com/edgarrmondragon/tap-toggl
+    label: Toggl
     docs: https://github.com/edgarrmondragon/tap-toggl#readme
     pip_url: -e .
+    description: Time Tracking Software for Any Workflow
     capabilities:
     - state
     - catalog
     - discover
     settings_group_validation:
-      - - auth.type
-        - auth.username
-        - auth.password
-      - - auth.type
-        - auth.api_token
+    - - auth.type
+      - auth.username
+      - auth.password
+    - - auth.type
+      - auth.api_token
     settings:
     - name: auth.type
-      description: The type of authentication to use
-      label: Authentication Type
       kind: options
+      label: Authentication Type
+      description: The type of authentication to use
       options:
       - label: API Token
         value: api_token
@@ -41,6 +40,7 @@ plugins:
       kind: password
       label: Password
       description: Password in Toggl
+      sensitive: true
     - name: auth.api_token
       kind: string
       label: API Token
@@ -50,8 +50,11 @@ plugins:
       label: Start Date
       description: Earliest date-time to get data from
     config:
-      start_date: "2024-02-14"
+      start_date: '2024-02-14'
+    repository: https://github.com/edgarrmondragon/tap-toggl
   loaders:
   - name: target-jsonl
     variant: andyh1203
     pip_url: target-jsonl
+venv:
+  backend: uv
