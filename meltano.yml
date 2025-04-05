@@ -51,7 +51,7 @@ plugins:
       description: Earliest date-time to get data from
     config:
       start_date: '2024-02-14'
-    repository: https://github.com/edgarrmondragon/tap-toggl
+    repo: https://github.com/edgarrmondragon/tap-toggl
   loaders:
   - name: target-jsonl
     variant: andyh1203
