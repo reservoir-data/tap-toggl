@@ -28,6 +28,7 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
 ]
 dynamic = [
   "version",
@@ -94,7 +95,7 @@ mypy = "mypy"
 types-requests = "requests"
 
 [tool.pyproject-fmt]
-max_supported_python = "3.13"
+max_supported_python = "3.14"
 
 [tool.pytest.ini_options]
 addopts = [
@@ -103,6 +104,7 @@ addopts = [
 ]
 filterwarnings = [
   "error",
+  "default:'asyncio.iscoroutinefunction' is deprecated:DeprecationWarning",
   "default:No records returned in stream 'time_entries':UserWarning",
   "default:Fields in transformed catalog but not in records:UserWarning",
 ]
