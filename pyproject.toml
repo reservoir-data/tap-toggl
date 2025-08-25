@@ -35,7 +35,7 @@ dynamic = [
 ]
 dependencies = [
   "requests==2.32.5",
-  "singer-sdk==0.48",
+  "singer-sdk==0.48.1",
 ]
 
 urls.Documentation = "https://github.com/edgarrmondragon/tap-toggl#readme"
