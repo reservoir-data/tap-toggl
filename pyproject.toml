@@ -38,9 +38,9 @@ dependencies = [
   "singer-sdk==0.48.1",
 ]
 
-urls.Documentation = "https://github.com/edgarrmondragon/tap-toggl#readme"
-urls.Homepage = "https://github.com/edgarrmondragon/tap-toggl"
-urls.Repository = "https://github.com/edgarrmondragon/tap-toggl"
+urls.Documentation = "https://github.com/reservoir-data/tap-toggl#readme"
+urls.Homepage = "https://github.com/reservoir-data/tap-toggl"
+urls.Repository = "https://github.com/reservoir-data/tap-toggl"
 scripts."tap-toggl" = "tap_toggl.tap:TapToggl.cli"
 
 [dependency-groups]
