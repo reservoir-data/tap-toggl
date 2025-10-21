@@ -34,7 +34,7 @@ dynamic = [
 ]
 dependencies = [
   "requests==2.32.5",
-  "singer-sdk==0.50.2",
+  "singer-sdk==0.51",
 ]
 
 urls.Documentation = "https://github.com/reservoir-data/tap-toggl#readme"
@@ -59,6 +59,11 @@ typing = [
 
 [tool.hatch.version]
 source = "vcs"
+
+[tool.uv]
+prerelease = "allow"
+preview = true
+required-version = ">=0.5.19"
 
 [tool.ruff]
 line-length = 88
@@ -148,8 +153,3 @@ warn_no_return = true
 warn_unreachable = true
 warn_unused_configs = true
 warn_unused_ignores = true
-
-[tool.uv]
-prerelease = "allow"
-preview = true
-required-version = ">=0.5.19"
