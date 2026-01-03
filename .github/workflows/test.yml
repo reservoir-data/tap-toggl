@@ -7,7 +7,6 @@ on:
       - tap_toggl/**
       - tests/**
       - pyproject.toml
-      - tox.ini
       - uv.lock
       - .github/workflows/test.yml
   pull_request:
@@ -16,7 +15,6 @@ on:
       - tap_toggl/**
       - tests/**
       - pyproject.toml
-      - tox.ini
       - uv.lock
       - .github/workflows/test.yml
   workflow_dispatch:
@@ -41,6 +39,7 @@ env:
 
 jobs:
   test:
+    name: Test
     runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
@@ -69,7 +68,6 @@ jobs:
         UV_PYTHON: ${{ steps.setup-python.outputs.python-path }}
         TAP_TOGGL_USERNAME: ${{ secrets.TAP_TOGGL_USERNAME }}
         TAP_TOGGL_PASSWORD: ${{ secrets.TAP_TOGGL_PASSWORD }}
-        TAP_TOGGL_START_DATE: ${{ secrets.TAP_TOGGL_START_DATE }}
       run: >
         uvx
         --with tox-uv==${{ env.TOX_UV_VERSION }}
@@ -77,6 +75,7 @@ jobs:
         tox -e ${{ matrix.environment || matrix.python-version }}
 
   pre-commit:
+    name: pre-commit
     runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0

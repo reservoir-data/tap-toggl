@@ -2,12 +2,19 @@
 
 from __future__ import annotations
 
+import datetime
+import math
+from typing import TYPE_CHECKING, Any, cast, override
+
 from singer_sdk import typing as th
 
-from tap_toggl.client import IncrementalTogglStream, TogglStream
+from tap_toggl.client import TogglStream
+
+if TYPE_CHECKING:
+    from singer_sdk.helpers.types import Context
 
 
-class TimeEntries(IncrementalTogglStream):
+class TimeEntries(TogglStream):
     """Entries stream."""
 
     name = "time_entries"
@@ -106,6 +113,30 @@ class TimeEntries(IncrementalTogglStream):
             description="Workspace ID",
         ),
     ).to_dict()
+
+    @override
+    def get_url_params(
+        self,
+        context: Context | None,
+        next_page_token: Any | None,
+    ) -> dict[str, Any]:
+        """Get URL query parameters for the Toggl API."""
+        params = cast(
+            "dict[str, Any]",
+            super().get_url_params(context, next_page_token),
+        )
+        if since := self.get_starting_timestamp(context):
+            # Since cannot be older than 3 months
+            now = datetime.datetime.now(datetime.UTC)
+            three_months_ago = now - datetime.timedelta(days=90)
+            if since < three_months_ago:
+                self.log(
+                    "Since cannot be older than 3 months, setting to %s",
+                    three_months_ago,
+                )
+                since = three_months_ago
+            params["since"] = math.floor(since.timestamp())
+        return params
 
 
 class Organizations(TogglStream):

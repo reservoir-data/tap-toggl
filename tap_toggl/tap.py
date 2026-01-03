@@ -2,15 +2,12 @@
 
 from __future__ import annotations
 
-import typing as t
+from typing import override
 
-import requests
 from singer_sdk import Stream, Tap
 from singer_sdk import typing as th
 
 from tap_toggl import streams
-
-OPENAPI_URL = "https://api.planetscale.com/v1/openapi-spec"
 
 
 class TapToggl(Tap):
@@ -43,14 +40,7 @@ class TapToggl(Tap):
         ),
     ).to_dict()
 
-    def get_openapi_schema(self) -> dict[t.Any, t.Any]:
-        """Retrieve OpenAPI schema for this API.
-
-        Returns:
-            OpenAPI schema.
-        """
-        return requests.get(OPENAPI_URL, timeout=5).json()  # type: ignore[no-any-return]
-
+    @override
     def discover_streams(self) -> list[Stream]:
         """Return a list of discovered streams.
 
