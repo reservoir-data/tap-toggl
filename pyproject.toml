@@ -54,6 +54,7 @@ testing = [
 ]
 typing = [
   "mypy",
+  "ty>=0.0.8",
   "types-requests",
 ]
 
@@ -101,10 +102,13 @@ types-requests = "requests"
 [tool.pyproject-fmt]
 max_supported_python = "3.14"
 
-[tool.pytest.ini_options]
+[tool.pytest]
 addopts = [
   "-vvv",
   "--durations=10",
+  "-ra",
+  "--strict-config",
+  "--strict-markers",
 ]
 filterwarnings = [
   "error",
@@ -112,6 +116,10 @@ filterwarnings = [
   "default:No records returned in stream 'time_entries':UserWarning",
   "default:Fields in transformed catalog but not in records:UserWarning",
 ]
+log_level = "INFO"
+minversion = "9"
+testpaths = [ "tests" ]
+xfail_strict = true
 
 [tool.tox]
 min_version = "4.22"
@@ -139,7 +147,10 @@ commands = [ [ "deptry", "." ] ]
 
 [tool.tox.env.typing]
 dependency_groups = [ "testing", "typing" ]
-commands = [ [ "mypy", "--strict", { replace = "posargs", default = [ "tap_toggl", "tests" ], extend = true } ] ]
+commands = [
+  [ "mypy", "--strict", { replace = "posargs", default = [ "tap_toggl", "tests" ], extend = true } ],
+  [ "ty", "check", { replace = "posargs", default = [ "tap_toggl", "tests" ], extend = true } ],
+]
 
 [tool.mypy]
 enable_error_code = [
@@ -147,6 +158,7 @@ enable_error_code = [
   "redundant-expr",
   "truthy-bool",
 ]
+strict = true
 warn_redundant_casts = true
 warn_return_any = true
 warn_no_return = true
