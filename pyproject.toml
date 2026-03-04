@@ -122,7 +122,7 @@ testpaths = [ "tests" ]
 xfail_strict = true
 
 [tool.tox]
-min_version = "4.22"
+min_version = "4.43"
 requires = [
   "tox",
   "tox-uv",
@@ -130,9 +130,9 @@ requires = [
 env_list = [
   "dependencies",
   "typing",
-  "3.14",
-  "3.13",
-  "3.12",
+  { product = [
+    { prefix = "3.", start = 12 },
+  ] },
 ]
 
 [tool.tox.env.dependencies]
@@ -142,7 +142,7 @@ commands = [ [ "deptry", "." ] ]
 [tool.tox.env.typing]
 dependency_groups = [ "testing", "typing" ]
 commands = [
-  [ "mypy", "--strict", { replace = "posargs", default = [ "tap_toggl", "tests" ], extend = true } ],
+  [ "mypy", { replace = "posargs", default = [ "tap_toggl", "tests" ], extend = true } ],
   [ "ty", "check", { replace = "posargs", default = [ "tap_toggl", "tests" ], extend = true } ],
 ]
 
