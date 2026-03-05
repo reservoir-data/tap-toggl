@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import datetime
 import math
-from typing import TYPE_CHECKING, Any, cast, override
+from typing import TYPE_CHECKING, Any, override
 
 from singer_sdk import typing as th
 
@@ -121,10 +121,7 @@ class TimeEntries(TogglStream):
         next_page_token: Any | None,
     ) -> dict[str, Any]:
         """Get URL query parameters for the Toggl API."""
-        params = cast(
-            "dict[str, Any]",
-            super().get_url_params(context, next_page_token),
-        )
+        params = super().get_url_params(context, next_page_token)
         if since := self.get_starting_timestamp(context):
             # Since cannot be older than 3 months
             now = datetime.datetime.now(datetime.UTC)
