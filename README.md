@@ -3,9 +3,6 @@
 # tap-toggl
 
 <div>
-  <a href="https://polar.sh/reservoir-data/tap-toggl">
-    <img src="https://polar.sh/embed/seeks-funding-shield.svg?org=reservoir-data&repo=tap-toggl"/>
-  </a>
   <a href="https://scientific-python.org/specs/spec-0000/">
     <img alt="SPEC 0 — Minimum Supported Dependencies" src="https://img.shields.io/badge/SPEC-0-green?labelColor=%23004811&color=%235CA038"/>
   </a>
