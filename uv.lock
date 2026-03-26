@@ -690,15 +690,18 @@ testing = [
     { name = "singer-sdk", extra = ["testing"] },
 ]
 typing = [
+    { name = "deptry" },
     { name = "mypy" },
+    { name = "pytest" },
+    { name = "singer-sdk", extra = ["testing"] },
     { name = "ty" },
     { name = "types-requests" },
 ]
 
 [package.metadata]
 requires-dist = [
-    { name = "requests", specifier = "==2.33.0" },
-    { name = "singer-sdk", specifier = "==0.54.0a8" },
+    { name = "requests", specifier = "~=2.33" },
+    { name = "singer-sdk", specifier = "~=0.54.0a8" },
 ]
 
 [package.metadata.requires-dev]
@@ -716,7 +719,10 @@ testing = [
     { name = "singer-sdk", extras = ["testing"] },
 ]
 typing = [
+    { name = "deptry", specifier = ">=0.12" },
     { name = "mypy" },
+    { name = "pytest", specifier = ">=8" },
+    { name = "singer-sdk", extras = ["testing"] },
     { name = "ty", specifier = ">=0.0.8" },
     { name = "types-requests" },
 ]
