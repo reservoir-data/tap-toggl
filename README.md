@@ -25,43 +25,43 @@ Built with the [Meltano Tap SDK](https://sdk.meltano.com) for Singer Taps.
 
 ## Capabilities
 
-* `catalog`
-* `state`
-* `discover`
-* `about`
-* `stream-maps`
-* `schema-flattening`
-* `batch`
+- `catalog`
+- `state`
+- `discover`
+- `about`
+- `stream-maps`
+- `schema-flattening`
+- `batch`
 
 ## Settings
 
-| Setting             | Required | Default | Description |
+| Setting | Required | Default | Description |
 |:--------------------|:--------:|:-------:|:------------|
-| username            | False    | None    | Toggl username |
-| password            | False    | None    | Toggl password |
-| api_token           | False    | None    | Toggl API token |
-| start_date          | False    | None    | Earliest datetime to get data from |
-| stream_maps         | False    | None    | Config object for stream maps capability. For more information check out [Stream Maps](https://sdk.meltano.com/en/latest/stream_maps.html). |
-| stream_map_config   | False    | None    | User-defined config values to be used within map expressions. |
-| faker_config        | False    | None    | Config for the [`Faker`](https://faker.readthedocs.io/en/master/) instance variable `fake` used within map expressions. Only applicable if the plugin specifies `faker` as an addtional dependency (through the `singer-sdk` `faker` extra or directly). |
-| flattening_enabled  | False    | None    | 'True' to enable schema flattening and automatically expand nested properties. |
-| flattening_max_depth| False    | None    | The max depth to flatten schemas. |
-| batch_config        | False    | None    |             |
+| username | False | None | Toggl username |
+| password | False | None | Toggl password |
+| api_token | False | None | Toggl API token |
+| start_date | False | None | Earliest datetime to get data from |
+| stream_maps | False | None | Config object for stream maps capability. For more information check out [Stream Maps](https://sdk.meltano.com/en/latest/stream_maps.html). |
+| stream_map_config | False | None | User-defined config values to be used within map expressions. |
+| faker_config | False | None | Config for the [`Faker`](https://faker.readthedocs.io/en/master/) instance variable `fake` used within map expressions. Only applicable if the plugin specifies `faker` as an addtional dependency (through the `singer-sdk` `faker` extra or directly). |
+| flattening_enabled | False | None | 'True' to enable schema flattening and automatically expand nested properties. |
+| flattening_max_depth| False | None | The max depth to flatten schemas. |
+| batch_config | False | None | |
 
 A full list of supported settings and capabilities is available by running: `tap-toggl --about`
 
 ## Supported Python Versions
 
-* 3.12
-* 3.13
-* 3.14
+- 3.12
+- 3.13
+- 3.14
 
 ### Source Authentication and Authorization
 
 There are two ways to authenticate for `tap-toggl`:
 
 1. Using your username and password
-2. Using your API token
+1. Using your API token
 
 If `api_token` is provided, `tap-toggl` will use it to authenticate. Otherwise, it will try to use `username` and `password`. If neither is provided, `tap-toggl` will raise an error.
 
