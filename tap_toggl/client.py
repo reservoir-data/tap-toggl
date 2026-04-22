@@ -23,7 +23,7 @@ class TogglStream(RESTStream[Any]):
             return HTTPBasicAuth(api_token, "api_token")
         if username := self.config.get("username"):
             password = self.config.get("password")
-            return HTTPBasicAuth(username, password)  # type: ignore[arg-type]
+            return HTTPBasicAuth(username, password)  # type: ignore[arg-type]  # ty:ignore[invalid-argument-type]
 
         msg = "Invalid auth configuration"
         raise ValueError(msg)
